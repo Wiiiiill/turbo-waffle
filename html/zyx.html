@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #canvas {
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas">
+
+</canvas>
+<script>
+    var canvas = document.getElementById("canvas");
+    var context = canvas.getContext("2d");
+    var cx = canvas.width = 400;
+    var cy = canvas.height = 400;
+
+    context.beginPath();
+
+    function srtts(context){
+        // scale()	缩放当前绘图至更大或更小
+        // rotate()	旋转当前绘图
+        // translate()	重新映射画布上的 (0,0) 位置
+        // transform()	替换绘图的当前转换矩阵
+        // setTransform()	将当前转换重置为单位矩阵，然后运行 transform()
+        context.strokeStyle = 'white';
+        context.strokeRect(50,5,50,25);
+        context.scale(2,2);
+        context.rotate(20*Math.PI/180);
+        context.strokeRect(50,5,50,25);
+        context.rotate(20*Math.PI/180);
+        context.scale(2,2);
+        context.strokeRect(50,5,50,25);
+    }
+    function fsssss(context){
+        // fillStyle	设置或返回用于填充绘画的颜色、渐变或模式
+        // strokeStyle	设置或返回用于笔触的颜色、渐变或模式
+        // shadowColor	设置或返回用于阴影的颜色
+        // shadowBlur	设置或返回用于阴影的模糊级别
+        // shadowOffsetX	设置或返回阴影距形状的水平距离
+        // shadowOffsetY	设置或返回阴影距形状的垂直距离
+        context.arc(100,100,50,0,2*Math.PI,false);
+        context.fillStyle = '#fff';
+        context.shadowBlur = 100;
+        context.shadowColor = '#fff';
+        context.fill()  
+    }
+    function c(context){
+        //创建线性渐变（用在画布内容上）
+        //context.createLinearGradient(x0,y0,x1,y1);
+        // x0：开始渐变的 x 坐标
+        // y0：开始渐变的 y 坐标
+        // x1：结束渐变的 x 坐标
+        // y1：结束渐变的 y 坐标
+        var grd = context.createLinearGradient(100,100,100,200);
+        //addColorStop()	规定渐变对象中的颜色和停止位置
+        grd.addColorStop(0,'pink');
+        grd.addColorStop(1,'white');
+        //createPattern()	在指定的方向上重复指定的元素
+        // createRadialGradient()	创建放射状/环形的渐变（用在画布内容上） 
+
+        context.fillStyle = grd;
+        context.fillRect(50,100,200,200);
+    }
+    function rect(context){
+        context.fillStyle = '#fff';
+        //实心矩形
+        context.fillRect(10, 10, 100, 100);
+        context.strokeStyle = '#fff';
+        //空心矩形  
+        context.strokeRect(130, 10, 100, 100);
+    }
+    function line(context){
+        context.moveTo(10,10);
+        context.lineTo(100,100);
+        context.lineTo(150,50);
+        //设置或返回当前的线条宽度
+        context.lineWidth = 10;
+        //设置或返回线条的结束端点样式
+        context.lineCap = 'round';
+        // 设置或返回两条线相交时，所创建的拐角类型
+        context.lineJoin='round';
+        //设置或返回最大斜接长度,既设置两边交汇处内角到外交的距离
+        context.miterLimit
+        context.strokeStyle = '#fff';
+        context.stroke()
+    }
+    function madeArc(context){
+        // 绘制一个圆 context.arc(x,y,r,sAngle,eAngle,counterclockwise);
+        //     x：圆心的 x 坐标
+        // y：圆心的 y 坐标
+        // r：圆的半径
+        // sAngle：起始角，以弧度计（弧的圆形的三点钟位置是 0 度）
+        // eAngle：结束角，以弧度计
+        // counterclockwise：可选。规定应该逆时针还是顺时针绘图。false 为顺时针，true 为逆时针
+        context.arc(100, 100, 50, 0, Math.PI * 1.5, true);
+    }
+    function madeStroke(context){
+        // 描边
+        context.strokeStyle="white";
+        context.stroke();
+    }
+    function madeFill(context){
+        // 填充
+        context.fillStyle = 'rgb(255,255,255)';
+        context.fill();
+    }
+    context.closePath();
+</script>
+</body>
+</html>
